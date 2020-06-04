@@ -9,7 +9,7 @@ router.post('/users', async (req, res) => {
 
     try {
         await user.save()
-        sendWelcomeEmail(user.email, user.name)
+        sendWelcomeEmail(user.email, user.first)
         const token = await user.generateAuthToken()
         res.status(201).send({user, token})
     } catch (e) {
@@ -42,7 +42,7 @@ router.post('/users/logout', auth, async (req, res) => {
 
 router.get('/users/me', auth, async (req, res ) => {
     const updates = Object.keys(req.body)
-    const allowedUpdates = ['name', 'email', 'password', 'age']
+    const allowedUpdates = ['first', 'last', 'email', 'password', 'age', 'paid']
     const isValidOperation = updates.every((update) => allowedUpdates.includes(update))
 
     if (!isValidOperation) {
