@@ -1,4 +1,13 @@
-import {generateLoginObject } from './utils.js'
+const generateLoginObject = (data) => {
+
+    let loginData = {
+        email: data.elements[0].value,
+        password: data.elements[1].value
+
+    }    
+
+    return loginData
+}
 
 const $loginForm = document.querySelector('#login-form')
 
@@ -12,7 +21,7 @@ $loginForm.addEventListener('submit', (e) => {
 
 
     const xhr = new XMLHttpRequest()
-    xhr.open('POST', 'http://localhost:3000/users/login', true)
+    xhr.open('POST', '/users/login', true)
     xhr.setRequestHeader('Content-type', 'application/json')
 
     xhr.send(jsonUserData)

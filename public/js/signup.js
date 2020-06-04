@@ -1,4 +1,4 @@
-const serverRoute = 'http://localhost:3000/users'
+const serverRoute = '/users'
 
 const generateSignupObject = (data) => {
     
@@ -29,7 +29,7 @@ $signupForm.addEventListener('submit', (e) => {
 
 
     const xhr = new XMLHttpRequest()
-    xhr.open('POST', serverRoute, true)
+    xhr.open('POST', '/users', true)
     xhr.setRequestHeader('Content-type', 'application/json')
 
     xhr.send(jsonUserData)
